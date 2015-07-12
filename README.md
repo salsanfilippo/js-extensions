@@ -172,7 +172,7 @@ Create a replacer function for stringify that will can handle
 
 <a name="new_String_new"></a>
 ### new String()
-Placeholder for the natove String class. The methods below are extension methods.
+Placeholder for the native String class. The methods below are extension methods.
 
 <a name="String+clone"></a>
 ### string.clone() ⇒ <code>[String](#String)</code>
