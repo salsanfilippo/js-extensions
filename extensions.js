@@ -214,7 +214,7 @@ if (!String) {
   // This will never execute. Hack to get extension method JSDoc to generate.
   (function() {
     /**
-     * @description Placeholder for the natove String class. The methods below are extension methods.
+     * @description Placeholder for the native String class. The methods below are extension methods.
      * @returns {String}
      * @constructor String
      */
