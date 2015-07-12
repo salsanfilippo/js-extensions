@@ -60,3 +60,19 @@ describe('Object', function() {
     });
   });
 });
+
+describe('Object', function() {
+  describe('Object.merge', function () {
+    it('should combine properties from multiple objects.', function () {
+      var obj = { "foo": "bar", "bar": "baz" };
+      var obj2 = { "baz": "boom" };
+      var obj3 = { "boom": "bam" };
+      var merged = Object.merge(obj, obj2, obj3);
+
+      assert.equal(merged.foo, obj.foo);
+      assert.equal(merged.bar, obj.bar);
+      assert.equal(merged.baz, obj2.baz);
+      assert.equal(merged.boom, obj3.boom);
+    });
+  });
+});

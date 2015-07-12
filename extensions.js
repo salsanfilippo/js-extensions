@@ -4,7 +4,7 @@ if (!Object) {
   // This will never execute. Hack to get extension method JSDoc to generate.
   (function() {
     /**
-     * @description Native Object class. The methods below are extension methods.
+     * @description Placeholder for native Object class. The methods below are extension methods.
      * @returns {Object}
      * @constructor Object
      */

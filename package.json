@@ -8,7 +8,7 @@
     "minify": "curl -X POST -s --data-urlencode 'input@extensions.js' http://javascript-minifier.com/raw > extensions.min.js",
     "jsdoc": "node_modules/jsdoc/jsdoc.js -d docs extensions.js",
     "readme": "node_modules/jsdoc-to-markdown/bin/cli.js ./extensions.js > README.md",
-    "checkin": "git add  README.md extensions.js extensions.min.js package.json tests/*.js &&  git commit -m \"JSDoc fixes. New README.\" && git push"
+    "checkin": "git add  README.md extensions.js extensions.min.js package.json tests/*.js &&  git commit --file - && git push"
   },
   "repository": {
     "type": "git",
