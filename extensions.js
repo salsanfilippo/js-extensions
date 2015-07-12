@@ -1,97 +1,185 @@
 'use strict'
 
-/**
- * @description Makes a deep copy of an object
- * @memberof Object.extensions
- * @param obj {*}The object to clone.
- * @returns {Object} The cloned object.
- */
-Object.clone = function (obj) {
-  return JSONfn.clone(obj, true);
+if (!Object.clone) {
+  /**
+   * @description Makes a deep copy of an object
+   * @memberof Object
+   * @param obj {*}The object to clone.
+   * @returns {Object} The cloned object.
+   */
+  Object.clone = function (obj) {
+    return JSONfn.clone(obj, true);
+  }
 }
 
-/**
- * @description Makes a deep copy of an object
- * @memberof Object.extensions
- * @method equals
- * @param obj {*} The first object to compare.
- * @param other The second object to compare.
- * @returns {boolean} True if both objects are equal. False, otherwise.
- */
-Object.equals = function (obj, other) {
-  if (ObjectImpl.isNullOrUndefined(obj) ||
-    ObjectImpl.isNullOrUndefined(other)) {
-    return (obj === null) && (other === null);
-  }
-
-  if (typeof (obj) === "string") {
-    return obj === other;
-  }
-
-  if (typeof(obj) !== "object") {
-    return obj === other;
-  }
-
-  return JSON.stringify(obj) === JSON.stringify(other);
-}
-
-/**
- * @description Generates a hash code for an Object.
- * @memberof Object.extensions
- * @method hashCode
- * @param obj {*} The object to generate a hashcode from.
- * @returns {int} The hashcode of the Object.
- */
-Object.hashCode = function (obj) {
-  if ((typeof obj === 'undefined') ||
-    (obj === null) ||
-    (obj.length === 0))
-    return 0;
-
-  var str = JSON.stringify(obj);
-  var hash = 0;
-  for (var i = 0; i < str.length; i++) {
-    var char = str.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash; // Convert to 32bit integer
-  }
-
-  return hash;
-}
-
-/**
- * @description Determines if an Object is null or undefined.
- * @memberof Object.extensions
- * @method isNullOrUndefined
- * @param obj {*} The Object to test.
- * @returns {boolean} True if the Object is null or undefined. False otherwise.
- */
-Object.isNullOrUndefined = function (obj) {
-  return ((typeof obj == 'undefined') || (obj === null));}
-
-/**
- * @description Creates an object that includes members from the source objects
- * @memberof Object.extensions
- * @method merge
- * @param params {...*} The object to copy merge.
- * @returns {*} A new object that combines the source objects.
- */
-Object.merge = function () {
-  var result = {};
-  var buffer = '';
-
-  for (var i=0; i<arguments.length; i++) {
-    var obj = arguments[i];
-    if (!Object.isNullOrUndefined(obj)) {
-      buffer = buffer.concat(JSON.stringify(obj));
+if (!Object.equals) {
+  /**
+   * @description Makes a deep copy of an object
+   * @memberof Object
+   * @method equals
+   * @param obj {*} The first object to compare.
+   * @param other The second object to compare.
+   * @returns {boolean} True if both objects are equal. False, otherwise.
+   */
+  Object.equals = function (obj, other) {
+    if (ObjectImpl.isNullOrUndefined(obj) ||
+      ObjectImpl.isNullOrUndefined(other)) {
+      return (obj === null) && (other === null);
     }
-  }
 
-  if (buffer.length>0) {
-    result = JSON.parse(buffer.replace(/}{/g,","));
-  }
+    if (typeof (obj) === "string") {
+      return obj === other;
+    }
 
-  return result;
+    if (typeof(obj) !== "object") {
+      return obj === other;
+    }
+
+    return JSON.stringify(obj) === JSON.stringify(other);
+  }
+}
+
+if (!Object.hashCode) {
+  /**
+   * @description Generates a hash code for an Object.
+   * @memberof Object
+   * @method hashCode
+   * @param obj {*} The object to generate a hashcode from.
+   * @returns {int} The hashcode of the Object.
+   */
+  Object.hashCode = function (obj) {
+    if ((typeof obj === 'undefined') ||
+      (obj === null) ||
+      (obj.length === 0))
+      return 0;
+
+    var str = JSON.stringify(obj);
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+      var char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32bit integer
+    }
+
+    return hash;
+  }
+}
+
+if (!Object.isNullOrUndefined) {
+  /**
+   * @description Determines if an Object is null or undefined.
+   * @memberof Object.extensions
+   * @method isNullOrUndefined
+   * @param obj {*} The Object to test.
+   * @returns {boolean} True if the Object is null or undefined. False otherwise.
+   */
+  Object.isNullOrUndefined = function (obj) {
+    return ((typeof obj == 'undefined') || (obj === null));
+  }
+}
+
+if (!Object.merge) {
+  /**
+   * @description Creates an object that includes members from the source objects
+   * @memberof Object
+   * @method merge
+   * @param params {...*} The object to copy merge.
+   * @returns {*} A new object that combines the source objects.
+   */
+  Object.merge = function () {
+    var result = {};
+    var buffer = '';
+
+    for (var i=0; i<arguments.length; i++) {
+      var obj = arguments[i];
+      if (!Object.isNullOrUndefined(obj)) {
+        buffer = buffer.concat(JSON.stringify(obj));
+      }
+    }
+
+    if (buffer.length>0) {
+      result = JSON.parse(buffer.replace(/}{/g,","));
+    }
+
+    return result;
+  }
+}
+
+if (!JSON.safeStringify) {
+  /**
+   * @description Safely serialize an object. Circular references will be tagged.
+   * @memberof JSON
+   * @method safeStringify
+   * @param str {*} The object to stringify.
+   * @param replacer {function} The custom replace method. This param is optional.
+   * @param spaces {number} The number of spaces to user to 'prettify' the 
+   *                        serialized string. This param is optional.
+   * @param cycleRepeater {function} The custom replace method for circular references.
+   *                                 This param is optional
+   * @returns {String} The serialized version of the object.
+   * @example var result = JSON.safeStringify(sobeObj); // Serialize, not 'pretty'.
+   * @example var result = JSON.safeStringify(sobeObj, 2); // Serialize, 'prettify' using 2 spaces.
+   * @example var result = JSON.safeStringify(sobeObj, myReplacer);
+   * @example var result = JSON.safeStringify(sobeObj, myReplacer, spaces);
+   * @example var result = JSON.safeStringify(sobeObj, myReplacer, spaces, myCycleReplacer);
+   */
+  JSON.safeStringify = function(obj, replacer, spaces, cycleReplacer) {
+    if ((arguments.length == 2) && 
+        ((replacer != null) && (typeof(replacer) === 'number'))) {
+      spaces = replacer;
+      replacer = undefined;
+    }
+
+    return JSON.stringify(obj, JSON.serializer(replacer, cycleReplacer), spaces);
+  }
+}
+
+if (!JSON.serializer) {
+  /**
+   * @description Create a replacer function for stringify that will can handle
+   *              circular references.
+   * @memberof JSON
+   * @method serializer
+   * @param replacer {function} The custom replace method. This param is optional.
+   * @param cycleRepeater {function} The custom eplace method for circular references.
+   *                                 This param is optional
+   * @returns {function} Returns a serializer function that can be used by stringify.
+   */
+  JSON.serializer = function(replacer, cycleReplacer) {
+    var stack = [], 
+        keys = [];
+
+    if (cycleReplacer == null) 
+      cycleReplacer = 
+		   function(key, value) {
+  			 if (stack[0] === value)  
+	    		 return "[Circular ~]";
+			
+			   return "[Circular ~." + keys.slice(0, stack.indexOf(value)).join(".") + "]";
+		   };
+
+    return function(key, value) {
+			 if (stack.length > 0) {
+			 var thisPos = stack.indexOf(this);
+			 if (~thisPos) {
+			   stack.splice(thisPos + 1);
+			   keys.splice(thisPos, Infinity, key);
+			 } else {
+			   stack.push(this);
+			   keys.push(key);
+			 }
+
+			 if (~stack.indexOf(value)) 
+			   value = cycleReplacer.call(this, key, value);
+			 } else { 
+			 stack.push(value);
+			 }
+		  
+			 return (replacer == null) 
+        							   ? value
+        							   : replacer.call(this, key, value);
+		   };
+  }
 }
 
 if (!String) {
