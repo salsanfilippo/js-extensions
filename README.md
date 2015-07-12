@@ -110,23 +110,11 @@ Safely serialize an object. Circular references will be tagged.
 
 **Example**  
 ```js
-var result = JSON.safeStringify(sobeObj); // Serialize, not 'pretty'.
-```
-**Example**  
-```js
-var result = JSON.safeStringify(sobeObj, 2); // Serialize, 'prettify' using 2 spaces.
-```
-**Example**  
-```js
-var result = JSON.safeStringify(sobeObj, myReplacer);
-```
-**Example**  
-```js
-var result = JSON.safeStringify(sobeObj, myReplacer, spaces);
-```
-**Example**  
-```js
-var result = JSON.safeStringify(sobeObj, myReplacer, spaces, myCycleReplacer);
+var result = JSON.safeStringify(sobeObj); // Serialize, not 'pretty'.<br/>
+         var result = JSON.safeStringify(sobeObj, 2); // Serialize, 'prettify' using 2 spaces.<br/>
+         var result = JSON.safeStringify(sobeObj, myReplacer);<br/>
+         var result = JSON.safeStringify(sobeObj, myReplacer, spaces);<br/>
+         var result = JSON.safeStringify(sobeObj, myReplacer, spaces, myCycleReplacer);
 ```
 <a name="JSON.serializer"></a>
 ### JSON.serializer(replacer, cycleRepeater) ⇒ <code>function</code>

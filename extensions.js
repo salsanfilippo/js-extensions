@@ -147,11 +147,11 @@ if (!JSON.safeStringify) {
    * @param cycleRepeater {function} The custom replace method for circular references.
    *                                 This param is optional
    * @returns {String} The serialized version of the object.
-   * @example var result = JSON.safeStringify(sobeObj); // Serialize, not 'pretty'.
-   * @example var result = JSON.safeStringify(sobeObj, 2); // Serialize, 'prettify' using 2 spaces.
-   * @example var result = JSON.safeStringify(sobeObj, myReplacer);
-   * @example var result = JSON.safeStringify(sobeObj, myReplacer, spaces);
-   * @example var result = JSON.safeStringify(sobeObj, myReplacer, spaces, myCycleReplacer);
+   * @example var result = JSON.safeStringify(sobeObj); // Serialize, not 'pretty'.<br/>
+   * var result = JSON.safeStringify(sobeObj, 2); // Serialize, 'prettify' using 2 spaces.<br/>
+   * var result = JSON.safeStringify(sobeObj, myReplacer);<br/>
+   * var result = JSON.safeStringify(sobeObj, myReplacer, spaces);<br/>
+   * var result = JSON.safeStringify(sobeObj, myReplacer, spaces, myCycleReplacer);
    */
   JSON.safeStringify = function(obj, replacer, spaces, cycleReplacer) {
     if ((arguments.length == 2) && 
