@@ -1,6 +1,6 @@
 {
   "name": "js-extensions",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Object and String extensions",
   "main": "extensions.js",
   "scripts": {
@@ -10,9 +10,9 @@
     "readme": "node_modules/jsdoc-to-markdown/bin/cli.js ./extensions.js > README.md",
     "checkin": "git add  README.md extensions.js extensions.min.js package.json tests/*.js &&  git commit -m \"JSDoc fixes. New README.\" && git push"
   },
-  "repository" : { 
-    "type" : "git",
-    "url" : "https://github.com/salsanfilippo/js-extensions.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salsanfilippo/js-extensions.git"
   },
   "keywords": [
     "Object",
