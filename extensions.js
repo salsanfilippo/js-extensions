@@ -83,7 +83,7 @@ if (!Object.hashCode) {
 if (!Object.isNullOrUndefined) {
   /**
    * @description Determines if an Object is null or undefined.
-   * @memberof Object.extensions
+   * @memberof Object
    * @method isNullOrUndefined
    * @param obj {*} The Object to test.
    * @returns {boolean} True if the Object is null or undefined. False otherwise.
@@ -367,7 +367,7 @@ if (!String.hashCode) {
   /**
    * @description Generates a hashcode for the current string.
    * @method hashCode
-   * @memberof String.prototype
+   * @memberof String
    * @param str {String} The string to hash.
    * @returns {String} The hashcode for the current string.
    * @example 'Hello World'.hashCode();
@@ -383,7 +383,7 @@ if (!String.ltrim) {
    * removed.
    * @param str {String} The string to trim.
    * @method ltrim
-   * @memberof String.prototype
+   * @memberof String
    * @returns {String} The current string with the leading spaces removed.
    * @example '   Hello World'.ltrim();
    */
@@ -401,7 +401,7 @@ if (!String.isNullOrEmpty) {
    * @returns {boolean} True if null, undefined, or zero length. False otherwise.
    */
   String.isNullOrEmpty = function (string) {
-    return Object.isNullOrUndefined(str);
+    return Object.isNullOrUndefined(string);
   };
 }
 
@@ -415,10 +415,10 @@ if (!String.md5) {
    * @example 'password'.md5();
    */
   String.md5 = function (str) {
-    /**
+    /*
      * @description Computes a MD5 message digest for the string instance.
      * @method computeDigest
-     * @memberof MD5
+     * @memberof String
      * @param str {String} The string instance to encode.
      * @returns {String} The MD5 message digest for the string instance.
      * @example 'password'.computeDigest();
@@ -706,7 +706,7 @@ if (!String.rtrim) {
    * @description Creates a copy of the current string with the trailing whitespace
    * removed.
    * @method rtrim
-   * @memberof String.prototype
+   * @memberof String
    * @param str {String} The string to trim.
    * @returns {String} The current string with the trailing spaces removed.
    * @example 'Hello World   '.rtrim();
@@ -787,7 +787,7 @@ if (!String.sprintf) {
       throw "sprintf: The first arguments need to be a valid format string.";
     }
 
-    /**
+    /*
      * Define the regex to match a formatting string
      * The regex consists of the following parts:
      * percent sign to indicate the start
@@ -809,7 +809,7 @@ if (!String.sprintf) {
      */
     var r = new RegExp(/%(\+)?([0 ]|'(.))?(-)?([0-9]+)?(\.([0-9]+))?([%bcdfosxX])/g);
 
-    /**
+    /*
      * Each format string is split into the following parts:
      * 0: Full format string
      * 1: sign specifier (+)
@@ -957,7 +957,7 @@ if (!String.sprintf) {
   };
 }
 
-if (!String.prototype.startsWith) {
+if (!String.startsWith) {
   /**
    * @description Determines if the string starts with another string.
    * @method startsWith
@@ -967,7 +967,7 @@ if (!String.prototype.startsWith) {
    * @returns {boolean} True if string starts with the preffix string. False otherwise.
    * @example var startsWith = 'string'.startsWith(, 'st');
    */
-  String.prototype.startsWith = function (string, prefix){
+  String.startsWith = function (string, prefix){
     return string.indexOf(prefix) === 0;
   };
 }
@@ -993,7 +993,7 @@ if (!String.toCamelCase) {
    * based on word breaks. The words may be separated with dash, underscore,
    * period, or space.
    * @method toCamelCase
-   * @memberof String.prototype
+   * @memberof String
    * @param str {String} THe string to convert case.
    * @returns {String} The current string converted to camel case.
    * @example 'hello_world'.toCamelCase();
@@ -1019,7 +1019,7 @@ if (!String.toTitleCase) {
   /**
    * @description Creates a copy of the current string converted to title case.
    * @method toTitleCase
-   * @memberof String.prototype
+   * @memberof String
    * @param str {String} The string to convert case.
    * @returns {String} The current string converted to title case.
    * @example 'hello world'.toTitleCase();
@@ -1064,7 +1064,7 @@ if (!String.prototype.endsWith) {
   /**
    * @description Determines if the string instance ends with another string.
    * @method endsWith
-   * @memberof String
+   * @memberof String.prototype
    * @param suffix {String} The string to check for.
    * @returns {boolean} True if string instance ends with the suffix string. False otherwise.
    * @example var endsWith = 'string'.endsWith('ng');
@@ -1092,14 +1092,14 @@ if (!String.prototype.format) {
   /**
    * @description Formats a string using the current string as the format string.
    * Numbered tokens are used to insert values e.g. 'Format string {0}, {1}, {2}'.
-   * @method format The format string is composed of zero or more directives:
+   * The format string is composed of zero or more directives:
    * ordinary characters (excluding %) that are copied directly to the result, and
    * conversion specifications, each of which results in fetching its own parameter.
+   * @method format 
    * @memberof String.prototype
    * @param params {*} One or more parameters to format into the format string.
    * @returns {String} The formatted string.
-   * @see String.format
-   * @example 'Hello, my name is {0} {1}.'.sprintf('John', 'Doe');
+   * @example 'Hello, my name is {0} {1}.'.format('John', 'Doe');
    */
   String.prototype.format = function() {
     var args = [ this ];
@@ -1120,6 +1120,18 @@ if (!String.prototype.hashCode) {
    */
   String.prototype.hashCode = function () {
     return String.hashCode(this);
+  };
+}
+
+if (!String.prototype.isNullOrEmpty) {
+  /**
+   * @description Determine if the current string instance is null, undefined, or zero length.
+   * @method isNullOrEmpty
+   * @memberof String.prototype
+   * @returns {boolean} True if null, undefined, or zero length. False otherwise.
+   */
+  String.prototype.isNullOrEmpty = function () {
+    return String.isNullOrUndefined(this);
   };
 }
 
@@ -1208,7 +1220,7 @@ if (!String.prototype.sprintf) {
    * @memberof String.prototype
    * @param params {*} One or more parameters to format into the format string.
    * @returns {String} The formatted string.
-   * @see String.format
+   * @see String.sprintf
    * @example 'Hello, my name is %s %s, I am %d years old.'.sprintf('John', 'Doe', 46);
    */
   String.prototype.sprintf = function() {
@@ -1224,13 +1236,26 @@ if (!String.prototype.startsWith) {
   /**
    * @description Determines if the string instance starts with another string.
    * @method startsWith
-   * @memberof String
+   * @memberof String.prototype
    * @param suffix {String} The string to check for.
    * @returns {boolean} True if string instance starts with the preffix string. False otherwise.
    * @example var startsWith = String.startsWith('string', 'st');
    */
   String.prototype.startsWith = function (prefix){
     return String.startsWith(this, prefix);
+  };
+}
+
+if (!String.prototype.toBoolean) {
+  /**
+   * @description Converts the current string instance to a boolean.
+   * @method toBoolean
+   * @memberof String.prototype
+   * @returns {boolean} True if the string is 'true' or 'yes'. False otherwise.
+   * @example var isTrue = 'true'.toBoolean();
+   */
+  String.toBoolean = function () {
+    return (String.toBoolean(this));
   };
 }
 
