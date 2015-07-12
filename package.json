@@ -4,8 +4,14 @@
   "description": "Object and String extensions",
   "main": "extensions.js",
   "scripts": {
-    "test": "mocha tests/tests.js",
-    "minify": "curl -X POST -s --data-urlencode 'input@extensions.js' http://javascript-minifier.com/raw > extensions.min.js"
+    "test": "mocha tests/*-tests.js",
+    "minify": "curl -X POST -s --data-urlencode 'input@extensions.js' http://javascript-minifier.com/raw > extensions.min.js",
+    "jsdoc": "node_modules/jsdoc/jsdoc.js -d docs extensions.js",
+    "readme": "node_modules/jsdoc-to-markdown/bin/cli.js ./extensions.js > README.md"
+  },
+  "repository" : { 
+    "type" : "git",
+    "url" : "https://github.com/salsanfilippo/js-extensions.git"
   },
   "keywords": [
     "Object",
@@ -20,6 +26,8 @@
     "json-fn": "0.60.0"
   },
   "devDependencies": {
+    "jsdoc": "3.3.2",
+    "jsdoc-to-markdown": "1.1.1",
     "mocha": "2.2.5"
   }
 }

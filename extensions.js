@@ -1,5 +1,20 @@
 'use strict'
 
+if (!Object) {
+  // This will never execute. Hack to get extension method JSDoc to generate.
+  (function() {
+    /**
+     * @description Placeholder for Object class. The methods below are extension methods
+     * for the builtin Object type.
+     * @returns {Object}
+     * @constructor Object
+     */
+    function __Object() {
+      return this;
+    }
+  })();
+}
+
 if (!Object.clone) {
   /**
    * @description Makes a deep copy of an object
@@ -22,8 +37,8 @@ if (!Object.equals) {
    * @returns {boolean} True if both objects are equal. False, otherwise.
    */
   Object.equals = function (obj, other) {
-    if (ObjectImpl.isNullOrUndefined(obj) ||
-      ObjectImpl.isNullOrUndefined(other)) {
+    if (Object.isNullOrUndefined(obj) ||
+      Object.isNullOrUndefined(other)) {
       return (obj === null) && (other === null);
     }
 
@@ -83,7 +98,7 @@ if (!Object.merge) {
    * @description Creates an object that includes members from the source objects
    * @memberof Object
    * @method merge
-   * @param params {...*} The object to copy merge.
+   * @param params {*} The object to copy merge.
    * @returns {*} A new object that combines the source objects.
    */
   Object.merge = function () {
@@ -103,6 +118,21 @@ if (!Object.merge) {
 
     return result;
   }
+}
+
+if (!JSON) {
+  // This will never execute. Hack to get extension method JSDoc to generate.
+  (function() {
+    /**
+     * @description Placeholder for JSON class. The methods below are extension methods
+     * for the builtin JSON type.
+     * @returns {JSON}
+     * @constructor JSON
+     */
+    function __JSON() {
+      return this;
+    }
+  })();
 }
 
 if (!JSON.safeStringify) {
@@ -257,7 +287,7 @@ if (!String.format) {
    * @method format
    * @memberof String
    * @param format {String} The format for the string.
-   * @param params {...} One or more parameters to format into the format string.
+   * @param params {*} One or more parameters to format into the format string.
    * @returns {String} The formatted string.
    * @example String.format('Hello, my name is {0} {1}.', 'John', 'Doe');
    */
@@ -646,7 +676,7 @@ if (!String.print) {
    * @method print
    * @memberof String
    * @param format {String} The format for the string.
-   * @param params {...*} One or more parameters to format into the format string.
+   * @param params {*} One or more parameters to format into the format string.
    * @example String.print('Hello, my name is {0} {1}.', 'John', 'Doe');
    * @see String.format
    */
@@ -661,7 +691,7 @@ if (!String.printf) {
    * @method printf
    * @memberof String
    * @param format {String} The format for the string.
-   * @param params {...*} One or more parameters to format into the format string.
+   * @param params {*} One or more parameters to format into the format string.
    * @example String.printf('Hello, my name is %s %s, I am %d years old.', 'John', 'Doe', 46);
    * @see String.sprintf
    */
@@ -748,7 +778,7 @@ if (!String.sprintf) {
    *   <li>x - the argument is treated as an integer and presented as a hexadecimal number (with lowercase letters).</li>
    *   <li>X - the argument is treated as an integer and presented as a hexadecimal number (with uppercase letters).</li>
    * </ul>
-   * @param params {...*} One or more parameters to format into the format string.
+   * @param params {*} One or more parameters to format into the format string.
    * @returns {String} The formatted string.
    */
   String.sprintf = function(format) {
@@ -1066,7 +1096,7 @@ if (!String.prototype.format) {
    * ordinary characters (excluding %) that are copied directly to the result, and
    * conversion specifications, each of which results in fetching its own parameter.
    * @memberof String.prototype
-   * @param params {...*} One or more parameters to format into the format string.
+   * @param params {*} One or more parameters to format into the format string.
    * @returns {String} The formatted string.
    * @see String.format
    * @example 'Hello, my name is {0} {1}.'.sprintf('John', 'Doe');
@@ -1125,7 +1155,7 @@ if (!String.prototype.print) {
    * @description Prints a formatted string using the current string as the format string.
    * @method print
    * @memberof String.prototype
-   * @param params {...*} One or more parameters to format into the format string.
+   * @param params {*} One or more parameters to format into the format string.
    * @example 'Hello, my name is {0} {1}.'.print('John', 'Doe');
    * @see String.format
    */
@@ -1143,7 +1173,7 @@ if (!String.prototype.printf) {
    * @description Prints a formatted string using the current string as the format string.
    * @method printf
    * @memberof String.prototype
-   * @param params {...*} One or more parameters to format into the format string.
+   * @param params {*} One or more parameters to format into the format string.
    * @example 'Hello, my name is %s %s, I am %d years old.'.printf('John', 'Doe', 46);
    * @see String.sprintf
    */
@@ -1176,7 +1206,7 @@ if (!String.prototype.sprintf) {
    * The format string uses tokens e.g. 'Format string %s, %d, %f'
    * @method sprintf
    * @memberof String.prototype
-   * @param params {...*} One or more parameters to format into the format string.
+   * @param params {*} One or more parameters to format into the format string.
    * @returns {String} The formatted string.
    * @see String.format
    * @example 'Hello, my name is %s %s, I am %d years old.'.sprintf('John', 'Doe', 46);

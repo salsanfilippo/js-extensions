@@ -1,4 +1,5 @@
 .git
+docs
 node_modules
 
 # Windows image file caches
