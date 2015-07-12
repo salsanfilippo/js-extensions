@@ -21,7 +21,7 @@
 
 <a name="new_Object_new"></a>
 ### new Object()
-Native Object class. The methods below are extension methods.
+Placeholder for native Object class. The methods below are extension methods.
 
 <a name="Object.clone"></a>
 ### Object.clone(obj) ⇒ <code>[Object](#Object)</code>
