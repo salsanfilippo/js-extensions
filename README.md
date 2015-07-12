@@ -21,8 +21,7 @@
 
 <a name="new_Object_new"></a>
 ### new Object()
-Placeholder for Object class. The methods below are extension methods
-for the builtin Object type.
+Native Object class. The methods below are extension methods.
 
 <a name="Object.clone"></a>
 ### Object.clone(obj) ⇒ <code>[Object](#Object)</code>
@@ -91,8 +90,7 @@ Creates an object that includes members from the source objects
 
 <a name="new_JSON_new"></a>
 ### new JSON()
-Placeholder for JSON class. The methods below are extension methods
-for the builtin JSON type.
+Placeholder for native JSON class. The methods below are extension methods.
 
 <a name="JSON.safeStringify"></a>
 ### JSON.safeStringify(str, replacer, spaces, cycleRepeater) ⇒ <code>[String](#String)</code>
@@ -174,8 +172,7 @@ Create a replacer function for stringify that will can handle
 
 <a name="new_String_new"></a>
 ### new String()
-Placeholder for String class. The methods below are extension methods
-for the builtin String type.
+Placeholder for the natove String class. The methods below are extension methods.
 
 <a name="String+clone"></a>
 ### string.clone() ⇒ <code>[String](#String)</code>

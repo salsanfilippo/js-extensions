@@ -4,8 +4,7 @@ if (!Object) {
   // This will never execute. Hack to get extension method JSDoc to generate.
   (function() {
     /**
-     * @description Placeholder for Object class. The methods below are extension methods
-     * for the builtin Object type.
+     * @description Native Object class. The methods below are extension methods.
      * @returns {Object}
      * @constructor Object
      */
@@ -124,8 +123,7 @@ if (!JSON) {
   // This will never execute. Hack to get extension method JSDoc to generate.
   (function() {
     /**
-     * @description Placeholder for JSON class. The methods below are extension methods
-     * for the builtin JSON type.
+     * @description Placeholder for native JSON class. The methods below are extension methods.
      * @returns {JSON}
      * @constructor JSON
      */
@@ -216,8 +214,7 @@ if (!String) {
   // This will never execute. Hack to get extension method JSDoc to generate.
   (function() {
     /**
-     * @description Placeholder for String class. The methods below are extension methods
-     * for the builtin String type.
+     * @description Placeholder for the natove String class. The methods below are extension methods.
      * @returns {String}
      * @constructor String
      */
