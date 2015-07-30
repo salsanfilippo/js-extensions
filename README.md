@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/salsanfilippo/js-extensions.svg?branch=master)](https://travis-ci.org/salsanfilippo/js-extensions)
+
 ## Classes
 <dl>
 <dt><a href="#Object">Object</a></dt>
