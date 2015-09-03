@@ -1,4 +1,5 @@
 .git
+.idea
 docs
 node_modules
 

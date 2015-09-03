@@ -15,6 +15,7 @@
 
 * [Object](#Object)
   * [new Object()](#new_Object_new)
+  * [.values(obj)](#Object.values) ⇒ <code>[Object](#Object)</code>
   * [.clone(obj)](#Object.clone) ⇒ <code>[Object](#Object)</code>
   * [.equals(obj, other)](#Object.equals) ⇒ <code>boolean</code>
   * [.hashCode(obj)](#Object.hashCode) ⇒ <code>int</code>
@@ -24,6 +25,18 @@
 <a name="new_Object_new"></a>
 ### new Object()
 Placeholder for native Object class. The methods below are extension methods.
+
+<a name="Object.values"></a>
+### Object.values(obj) ⇒ <code>[Object](#Object)</code>
+Returns an array of values of a given object's own enumerable properties, in 
+the same order as that provided by a for...in loop.
+
+**Kind**: static method of <code>[Object](#Object)</code>  
+**Returns**: <code>[Object](#Object)</code> - The array of property values.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| obj | <code>\*</code> | The object whose enumerable own properties are to be returned. |
 
 <a name="Object.clone"></a>
 ### Object.clone(obj) ⇒ <code>[Object](#Object)</code>

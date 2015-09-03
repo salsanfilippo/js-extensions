@@ -6,6 +6,18 @@ JSONfn = require('../node_modules/json-fn/jsonfn.js');
 // Load the extensions
 require('../extensions.js');
 
+
+describe('Object', function() {
+  describe('Object.values', function () {
+    it('should return the values of the object\'s properties.', function () {
+      var obj = { "foo": "bar", "bar": "baz" };
+      var obj2 = Object.values(obj);
+
+      assert.equal(JSONfn.stringify([ "bar", "baz" ]), JSONfn.stringify(obj2));
+    });
+  });
+});
+
 describe('Object', function() {
   describe('Object.clone', function () {
     it('should make an exact copy of an object.', function () {

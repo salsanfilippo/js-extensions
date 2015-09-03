@@ -14,6 +14,23 @@ if (!Object) {
   })();
 }
 
+if (!Object.values) {
+  /**
+   * @description Returns an array of values of a given object's own enumerable properties, in 
+   * the same order as that provided by a for...in loop.
+   * @memberof Object
+   * @method values
+   * @param obj {*} The object whose enumerable own properties are to be returned.
+   * @returns {Object} The array of property values.
+   **/
+  Object.values = function(obj) {
+    var result = [], keys = Object.keys(obj);
+    for (var i = 0, len = keys.length; i < len; i++)
+      result.push(obj[keys[i]]);
+    return result;
+  }
+}
+
 if (!Object.clone) {
   /**
    * @description Makes a deep copy of an object
