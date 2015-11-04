@@ -1,8 +1,5 @@
 
 interface Object {
-  assign(target: any, ...sources: any[]): any;
-  observe(target: any, callback: Function, acceptList?: Array<any>): void;
-
   /**
    * @description Returns an array of values of a given object's own enumerable properties, in 
    * the same order as that provided by a for...in loop.
